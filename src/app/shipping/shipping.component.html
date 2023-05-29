@@ -1,0 +1,7 @@
+<!-- 利用 async 管道修改配送组件的模板，以显示配送类型和价格 -->
+<h3>Shipping Prices</h3>
+
+<div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.price | currency }}</span>
+</div>

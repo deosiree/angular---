@@ -1,0 +1,30 @@
+<h3>Cart</h3>
+
+<!-- 在购物车视图中添加一个到配送视图的链接。 -->
+<p>
+  <a routerLink="/shipping">Shipping Prices</a>
+</p>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+</div>
+
+<!-- 
+  1.在 cart.component.html 的底部，添加一个 HTML <form> 元素和一个 Purchase 按钮。
+    2.使用 formGroup 属性绑定将 checkoutForm（ts中的那个公共属性） 绑定到 HTML 中的 <form> 标签。 ---属性用[]
+    3.在 form 标签上，使用 ngSubmit 事件绑定来侦听表单提交，并以 checkoutForm 的值为参数调用 onSubmit() 方法。---事件用()
+  -->
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <!-- 添加 name 和 address 的 <input> 字段 -->
+  <div>
+    <label for="name"> Name </label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="address"> Address </label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+  <button class="button" type="submit">Purchase</button>
+</form>

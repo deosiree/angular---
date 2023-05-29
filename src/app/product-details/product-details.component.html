@@ -1,0 +1,10 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+  <!-- 添加一个带有 Buy 标签的按钮，并且把其 click() 事件绑定到 addToCart() 方法上。
+    这段代码会为产品详情模板添加一个 Buy 按钮，并把当前产品添加到购物车中。 -->
+  <button type="button" (click)="addToCart(product)">Buy</button>
+</div>

@@ -1,0 +1,5 @@
+<p *ngIf="product && product.price > 700">
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+</p>
+<!-- 如果产品价格超过 700 美元，就会出现此按钮。 -->
+<!-- 数据传递给父组件：增加事件绑定，并调用 notify.emit() 方法 -->

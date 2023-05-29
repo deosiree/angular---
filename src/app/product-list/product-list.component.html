@@ -1,0 +1,30 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+  <h3>
+    <!-- 关联URL路径[routerLink] -->
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]"
+    >
+      {{ product.name }}
+      <!-- 在预览窗格中，将鼠标悬停在产品名称上，可以查看所绑定的 name 属性值，该值是产品名加上单词 “details”。通过属性绑定 [ ] 可以在模板表达式中使用属性值。 -->
+    </a>
+
+    <p *ngIf="product.description">
+      <!-- 以便 Angular 只让当前产品有描述
+    请注意，最后一项产品没有描述段落。Angular 不会创建 <p> 元素，因为此产品的 description 属性为空。 -->
+      Description: {{ product.description }}
+    </p>
+
+    <button type="button" style="display:block;" (click)="share()">
+      <!-- 添加一个按钮，以便用户可以共享产品。 -->
+      Share
+    </button>
+
+    <app-product-alerts [product]="product" (notify)="onNotify()">
+      <!-- [product]="product"数据传递给子组件 -->
+      <!-- (notify)="onNotify()"数据传递到父组件 -->
+    </app-product-alerts>
+  </h3>
+</div>
